@@ -22,6 +22,6 @@ const port = process.env.PORT || 4545;
 
 app.use(rollbar.errorHandler());
 
-appendFile.listen(port, () => {
+app.listen(port, () => {
 	console.log(`Started on ${port}`);
 });
