@@ -1,5 +1,4 @@
 const express = require("express");
-const { appendFile } = require("fs");
 const path = require("path");
 const Rollbar = require("rollbar");
 
@@ -13,6 +12,11 @@ const app = express();
 
 app.use(express.json());
 app.use("/style", express.static("./public/styles.css"));
+
+app.get("/", (req, res) => {
+	res.sendFile(path.join(__dirname, "/public/index.html"));
+	rollbar.info("HTML file served sucessfully!");
+});
 
 const port = process.env.PORT || 4545;
 
