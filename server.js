@@ -23,6 +23,7 @@ app.post("/api/student", (req, res) => {
 	let { name } = req.body;
 	name = name.trim();
 	name = name.toLowerCase();
+	name = name[0].toUpperCase;
 
 	const index = students.findIndex((studentName) => studentName === name);
 
