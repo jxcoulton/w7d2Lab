@@ -19,14 +19,12 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api/student", (req, res) => {
-	callFakeFunction();
+	try {
+		callFakeFunction();
+	} catch (err) {
+		console.error(err);
+	}
 });
-
-try {
-	callFakeFunction();
-} catch (err) {
-	console.error(err);
-}
 
 const port = process.env.PORT || 4545;
 
