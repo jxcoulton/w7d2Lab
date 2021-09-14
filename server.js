@@ -18,7 +18,13 @@ app.get("/", (req, res) => {
 	rollbar.info("HTML file served sucessfully!");
 });
 
-app.get("/error", (req, res) => {});
+app.get("/error", (req, res) => {
+	try {
+		notafunction();
+	} catch (error) {
+		rollbar.error("that did not work");
+	}
+});
 
 const port = process.env.PORT || 4545;
 
