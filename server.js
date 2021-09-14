@@ -20,9 +20,25 @@ app.get("/", (req, res) => {
 
 app.get("/error", (req, res) => {
 	try {
-		notafunction();
+		errorFunction();
 	} catch (error) {
-		rollbar.error("that did not work");
+		rollbar.error("errorFunction did not work");
+	}
+});
+
+app.get("/error", (req, res) => {
+	try {
+		warningFunction();
+	} catch (error) {
+		rollbar.warning("warningFunction did not work");
+	}
+});
+
+app.get("/error", (req, res) => {
+	try {
+		criticalFunction();
+	} catch (error) {
+		rollbar.critical("criticalFunction did not work");
 	}
 });
 
