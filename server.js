@@ -23,21 +23,25 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api/student", (req, res) => {
-	let { name } = req.body;
-	name = name.trim();
-	name = name.toLowerCase();
-	name = capitalizeFirstLetter(name);
+	let { firstName, lastName } = req.body;
+	firstName = firstName.trim();
+	firstName = firstName.toLowerCase();
+	firstName = capitalizeFirstLetter(firstName);
+	(lastName = lastName), trim();
+	lastName = lastName.toLowerCase();
+	lastName = capitalizeFirstLetter(lastName);
+	let fullName = `${firstName} ${lastName}`;
 
-	const index = students.findIndex((studentName) => studentName === name);
+	const index = students.findIndex((studentName) => studentName === fullName);
 
-	if (index === -1 && name !== "") {
-		students.push(name);
+	if (index === -1 && fullName !== "") {
+		students.push(fullName);
 		rollbar.log("Student added successfully", {
 			author: "Jayme",
 			type: "manual entry",
 		});
 		res.status(200).send(students);
-	} else if (name === "") {
+	} else if (fullName === "") {
 		rollbar.error("No name given");
 		res.status(400).send("must provide a name.");
 	} else {
