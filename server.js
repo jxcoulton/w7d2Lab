@@ -18,6 +18,16 @@ app.get("/", (req, res) => {
 	rollbar.info("HTML file served sucessfully!");
 });
 
+app.post("/api/student", (req, res) => {
+	callFakeFunction();
+});
+
+try {
+	callFakeFunction();
+} catch (err) {
+	console.error(err);
+}
+
 const port = process.env.PORT || 4545;
 
 app.use(rollbar.errorHandler());
