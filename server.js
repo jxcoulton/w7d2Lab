@@ -18,13 +18,7 @@ app.get("/", (req, res) => {
 	rollbar.info("HTML file served sucessfully!");
 });
 
-app.post("/api/student", (req, res) => {
-	try {
-		callFakeFunction();
-	} catch (err) {
-		console.error(err);
-	}
-});
+app.get("/error", (req, res) => {});
 
 const port = process.env.PORT || 4545;
 

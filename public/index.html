@@ -15,5 +15,15 @@
 			<button>Add Student</button>
 		</form>
 		<section></section>
+		<script>
+			axios
+				.get("/api/error")
+				.then((res) => {
+					console.log(res.data);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		</script>
 	</body>
 </html>
