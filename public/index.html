@@ -19,15 +19,20 @@
 		<script>
 			const addForm = document.querySelector("form");
 			const nameFirstInput = document.querySelector("#firstName");
+			const lastNameInput = document.querySelector("#lastName");
 			const container = document.querySelector("section");
 
 			function submitHandler(e) {
 				e.preventDefault();
 				axios
-					.post("/api/student", { name: nameFirstInput.value })
+					.post("/api/student", {
+						firstName: nameFirstInput.value,
+						lastName: lastNameInput.value,
+					})
 					.then((res) => {
 						container.innerHTML = "";
 						nameFirstInput.value = "";
+						lastNameInput.value = "";
 
 						res.data.forEach((studentName) => {
 							container.innerHTML += `<p>${studentName}</p>`;
@@ -35,6 +40,7 @@
 					})
 					.catch((err) => {
 						nameFirstInput.value = "";
+						lastNameInput.value = "";
 
 						const notif = document.createElement("aside");
 						notif.innerHTML = `<p>${err.response.data}</p>
