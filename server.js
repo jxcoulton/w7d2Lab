@@ -26,7 +26,7 @@ app.get("/error", (req, res) => {
 	}
 });
 
-app.get("/error", (req, res) => {
+app.get("/warning", (req, res) => {
 	try {
 		warningFunction();
 	} catch (error) {
@@ -34,7 +34,7 @@ app.get("/error", (req, res) => {
 	}
 });
 
-app.get("/error", (req, res) => {
+app.get("/critical", (req, res) => {
 	try {
 		criticalFunction();
 	} catch (error) {

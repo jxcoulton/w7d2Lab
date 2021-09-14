@@ -24,6 +24,24 @@
 				.catch((err) => {
 					console.log(err);
 				});
+
+			axios
+				.get("/warning")
+				.then((res) => {
+					console.log(res.data);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+
+			axios
+				.get("/critical")
+				.then((res) => {
+					console.log(res.data);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 		</script>
 	</body>
 </html>
