@@ -11,29 +11,30 @@
 	<body>
 		<h1>Student List</h1>
 		<form>
-			<input type="text" placeholder="Type name here" />
+			<input id="firstName" type="text" placeholder="First Name" />
+			<input id="lastName" type="text" placeholder="Last Name" />
 			<button>Add Student</button>
 		</form>
 		<section></section>
 		<script>
 			const addForm = document.querySelector("form");
-			const nameInput = document.querySelector("input");
+			const nameFirstInput = document.querySelector("#firstName");
 			const container = document.querySelector("section");
 
 			function submitHandler(e) {
 				e.preventDefault();
 				axios
-					.post("/api/student", { name: nameInput.value })
+					.post("/api/student", { name: nameFirstInput.value })
 					.then((res) => {
 						container.innerHTML = "";
-						nameInput.value = "";
+						nameFirstInput.value = "";
 
 						res.data.forEach((studentName) => {
 							container.innerHTML += `<p>${studentName}</p>`;
 						});
 					})
 					.catch((err) => {
-						nameInput.value = "";
+						nameFirstInput.value = "";
 
 						const notif = document.createElement("aside");
 						notif.innerHTML = `<p>${err.response.data}</p>
