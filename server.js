@@ -10,6 +10,9 @@ let rollbar = new Rollbar({
 
 const students = [];
 const app = express();
+function capitalizeFirstLetter(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 app.use(express.json());
 app.use("/style", express.static("./public/styles.css"));
@@ -23,7 +26,7 @@ app.post("/api/student", (req, res) => {
 	let { name } = req.body;
 	name = name.trim();
 	name = name.toLowerCase();
-	name = name[0].toUpperCase;
+	name = capitalizeFirstLetter(name);
 
 	const index = students.findIndex((studentName) => studentName === name);
 
