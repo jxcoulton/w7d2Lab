@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 
 const port = process.env.PORT || 4545;
 
-appendFile.use(rollbar.errorHandler());
+app.use(rollbar.errorHandler());
 
 appendFile.listen(port, () => {
 	console.log(`Started on ${port}`);
